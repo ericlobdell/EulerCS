@@ -48,7 +48,8 @@ namespace Euler
 
         public static long SumNumericString ( string s )
         {
-            return s.Aggregate(0, (acc, n) => acc += Int32.Parse(n.ToString()));
+            return s.Aggregate(0, (acc, n) => 
+                acc += int.Parse(n.ToString()));
         }
 
         public static long Factorial ( long n )
@@ -69,9 +70,11 @@ namespace Euler
             return isPalindrome;
         }
 
-        public static IEnumerable<int> GetDivisors ( int n )
+        public static List<int> GetDivisors ( int n )
         {
-            return Range( n - 1 ).Where( x => IsDivisor( n, x ) );
+            return Range( n / 2 + 1 )
+                .Where( x => IsDivisor( n, x ) )
+                .ToList();
         }
 
         public static bool IsAmicableNumber ( int a )
@@ -82,7 +85,13 @@ namespace Euler
 
         public static IEnumerable<int> Range ( int n )
         {
-            return Enumerable.Range( 1, (n >= 0 ? n : 0) );
+            var nums = new List<int>( );
+            var upperBound = Math.Abs( n ) ;
+
+            for ( int i = 1; i <= upperBound; i++ )
+                    nums.Add( i );
+
+            return nums;
         }
 
         public static bool IsAbundantNumber(int n)

@@ -18,11 +18,16 @@ namespace Euler
         public void solve()
         {
             var solved = false;
-            var i = 1;
+            var i = 1000;
+
             while (!solved)
             {
                 var triValue = TriangleValueForNumber(i);
                 var divisors = GetDivisors((int)triValue);
+
+                if ( i % 100 == 0 )
+                    Console.WriteLine( $"{divisors.Count( )} divisors for {i}..." );
+
                 if (divisors.Count() > 500)
                 {
                     solved = true;

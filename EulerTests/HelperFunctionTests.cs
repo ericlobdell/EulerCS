@@ -27,9 +27,9 @@ namespace EulerTests
         public void GetDivisorsReturnsCollectionOfDivisorsForNumber ()
         {
             var divisorsOf220 = new List<int> { 1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110 };
-            var nums = EulerChallenge.GetDivisors( 220 ).ToList();
+            var nums = EulerChallenge.GetDivisors( 220 );
 
-            Assert.AreEqual( divisorsOf220.Count, nums.Count );
+            Assert.AreEqual( divisorsOf220.Count, nums.Count() );
 
             foreach ( var d in divisorsOf220 )
             {
